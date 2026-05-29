@@ -555,16 +555,16 @@ grid_size = st.sidebar.slider("曲面グリッド数", min_value=20, max_value=1
 st.sidebar.header("手動最適化の設定")
 manual_step_a = st.sidebar.number_input(
     "a の変化幅",
-    value=0.1,
+    value=0.001,
     min_value=0.000001,
-    step=0.1,
+    step=0.001,
     format="%.6f",
 )
 manual_step_b = st.sidebar.number_input(
     "b の変化幅",
-    value=0.1,
+    value=0.001,
     min_value=0.000001,
-    step=0.1,
+    step=0.001,
     format="%.6f",
 )
 
