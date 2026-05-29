@@ -729,8 +729,8 @@ $$
             default_b0 = 0.0
             st.info("手動最適化の履歴がないため，初期値は a=1, b=0 です。")
 
-        a0 = st.number_input("初期値 a", value=default_a0, step=0.1, format="%.6f", key="auto_a0")
-        b0 = st.number_input("初期値 b", value=default_b0, step=0.1, format="%.6f", key="auto_b0")
+        a0 = st.number_input("初期値 a", value=default_a0, step=0.001, format="%.6f", key="auto_a0")
+        b0 = st.number_input("初期値 b", value=default_b0, step=0.001, format="%.6f", key="auto_b0")
 
         learning_rate = st.number_input(
             "学習率 η",
