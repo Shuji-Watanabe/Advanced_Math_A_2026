@@ -501,24 +501,20 @@ uploaded_file = st.sidebar.file_uploader(
 )
 
 if uploaded_file is None:
-    st.info("まず，x列とy列を含むCSVファイルをアップロードしてください。")
+    st.info("CSVファイルがアップロードされていないため，サンプルデータを使います。")
 
-    sample_df = pd.DataFrame(
+    df = pd.DataFrame(
         {
-            "x": np.linspace(0, 10, 20),
-            "y": 2.5 * np.linspace(0, 10, 20) + 1.0 + np.random.default_rng(0).normal(0, 2, 20),
+            "x": [0.0, 0.5263, 1.0526, 1.5789, 2.1052],
+            "y": [1.2512, 2.0515, 4.9124, 5.1571, 5.1918],
         }
     )
-
-    st.markdown("#### CSVの例")
-    st.dataframe(sample_df.head(), hide_index=True)
-    st.stop()
-
-try:
-    df = pd.read_csv(uploaded_file)
-except Exception as e:
-    st.error(f"CSVファイルを読み込めませんでした：{e}")
-    st.stop()
+else:
+    try:
+        df = pd.read_csv(uploaded_file)
+    except Exception as e:
+        st.error(f"CSVファイルを読み込めませんでした：{e}")
+        st.stop()
 
 if df.shape[1] < 2:
     st.error("CSVには少なくとも2列が必要です。")
@@ -543,7 +539,7 @@ if len(work_df) < 2:
 x = work_df["x"].to_numpy(dtype=float)
 y = work_df["y"].to_numpy(dtype=float)
 
-st.subheader("アップロードデータ")
+st.subheader("使用データ")
 st.dataframe(work_df, use_container_width=True, hide_index=True)
 
 
